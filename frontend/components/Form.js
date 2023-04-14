@@ -1,12 +1,28 @@
 import React from 'react'
 
 export default class Form extends React.Component {
+constructor(){
+  super();
+  this.state={
+    input: ""
+  }
+}
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.handleAdd(this.state.input);
+  }
+  handleChange = (e) => {
+    this.setState({
+      ...this.state,
+      input: e.target.value
+    })
+  }
+
   render() {
     return (
       <form>
-          <input />&nbsp;
-          <button>Add To-Do</button>&nbsp;
-          <button>Clear</button>
+          <input onChange={this.handleChange}/>&nbsp;
+          <button onClick={this.handleSubmit}>Add To-Do</button>&nbsp;
         </form>
     )
   }

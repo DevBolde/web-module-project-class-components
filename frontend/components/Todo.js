@@ -1,11 +1,15 @@
 import React from 'react'
 
 export default class Todo extends React.Component{
+  handleClick =() => {
+    console.log("handle Click")
+  }
   render(){
     return (
-    <li>
+    <li onclick={this.handleClick}>
+      
       {this.props.todos.name} 
-      { this.props.todos.completed ? <span>-completed-</span>:<span></span>} 
+      { this.props.todos.completed ? <span>-completed</span>:<span></span>} 
     </li>)
   }
 }
