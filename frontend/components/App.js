@@ -1,4 +1,7 @@
 import React from 'react'
+import TodoList from './TodoList'
+import Form from './Form';
+
 
 export default class App extends React.Component {
   constructor(){
@@ -14,16 +17,6 @@ export default class App extends React.Component {
             name: 'Bake Cookies',
             id: 1528817084358,
             completed: false
-          },
-          {
-            name: 'Monkey around',
-            id: 1528817084359,
-            completed: false,
-          },
-          {
-            name: 'Build Project',
-            id: 1528817084360,
-            completed: false
           }
         ]
     }
@@ -33,21 +26,9 @@ export default class App extends React.Component {
     const { todos } = this.state;
     return (
       <div>
-        <h1>Todos</h1>
-        <ul>
-          {
-            todos.map(ele => {
-              return (<li>{ele.name} { todos.completed?<span>-completed-</span>:<span></span> }</li>)
-            })
-          }
-        </ul>
-
-        <form>
-          <input />
-          <button>Add</button>
-        </form>
-
-        <button>Clear</button>
+        <h1>Todo's "To-Do's" App</h1>
+        <TodoList todos={todos}/>
+        <Form />
       </div>
     )
   }
