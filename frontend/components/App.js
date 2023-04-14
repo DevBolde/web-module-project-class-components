@@ -51,14 +51,34 @@ export default class App extends React.Component {
         })
       })
     } 
-  
+      handleToggle = (clickedId) => {
+        //1. setState
+        //2. change todos.
+        //3. find the todo that we clicked on.
+        //4. flip the value of completed for that todo
+        //5. keep all other todos the same.
+
+      this.setState({
+        ...this.state,
+        todos: this.state.todos.map(todo=> {
+          if(todo.id === clickedId){
+            return{
+              ...todo, 
+              completed: !todo.completed
+            }
+          }
+
+          return todo
+        })
+      })
+      }
   render() {
     const { todos } = this.state;
     return (
       <div>
         <h1>Todo's "To-Do's" App</h1>
-        <TodoList todos={todos} />
-        <Form handleAdd={this.handleAdd} />
+        <TodoList handleToggle={this.handleToggle} todos={todos} />
+        <Form handleAdd={this.handleAdd} handleToggle={this.handleToggle}/>
         <button onClick={this.handleClear}>Clear</button>
       </div>
     )
